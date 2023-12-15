@@ -10,9 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.drako.nasser.server.NanoServer
 import com.drako.nasser.ui.theme.NasserTheme
+import fi.iki.elonen.NanoHTTPD
 
 class MainActivity : ComponentActivity() {
+
+    private var server: NanoServer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,12 +27,33 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting("drakolin")
                 }
             }
         }
+        runServer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        server?.stop()
+    }
+
+    private fun runServer() {
+        server = NanoServer()
+        Thread {
+            try {
+                server?.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false)
+                runOnUiThread {
+                    println("Server is running now")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }.start()
     }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -37,10 +63,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     NasserTheme {
-        Greeting("Android")
+        Greeting("drakolin")
     }
 }
