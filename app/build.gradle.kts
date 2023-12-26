@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.drako.nasser"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.drako.nasser"
@@ -57,6 +57,10 @@ dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+
+    // status bar controller
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+
 
     implementation("androidx.activity:activity-compose:1.7.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))

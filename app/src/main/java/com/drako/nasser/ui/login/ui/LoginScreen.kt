@@ -114,7 +114,6 @@ fun PasswordField(password: String, onTextFieldChanged: (String) -> Unit) {
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
         )
-
     )
 }
 
@@ -138,9 +137,7 @@ fun EmailField(email: String, onTextFieldChanged: (String) -> Unit) {
             focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
             unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent
         )
-
     )
-
 }
 
 @Composable

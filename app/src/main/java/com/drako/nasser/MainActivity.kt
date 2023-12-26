@@ -44,9 +44,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.drako.nasser.server.NanoServer
-import com.drako.nasser.ui.login.ui.LoginScreen
-import com.drako.nasser.ui.login.ui.LoginViewModel
 import com.drako.nasser.ui.theme.NasserTheme
+import com.drako.nasser.ui.view.HomeScreen
 import fi.iki.elonen.NanoHTTPD
 
 class MainActivity : ComponentActivity() {
@@ -54,6 +53,7 @@ class MainActivity : ComponentActivity() {
     private var server: NanoServer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         initUI()
@@ -61,18 +61,26 @@ class MainActivity : ComponentActivity() {
 
 
     private fun initUI() {
+
         setContent {
+
+
             //helloApp()
             //Content()
             //ViewContainer()
+            /*
+                        Surface(
+                            modifier = Modifier.fillMaxSize(),
+                            color = MaterialTheme.colorScheme.background
+                        ) {
+                            LoginScreen(LoginViewModel())
 
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
-                LoginScreen(LoginViewModel())
-            }
+                        }*/
 
+
+
+
+            HomeScreen()
         }
         runServer()
     }
