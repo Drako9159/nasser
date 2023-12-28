@@ -10,4 +10,7 @@
     <color name="background">#353535</color>
 
     <color name="amoled_black">#000000</color>
+    <color name="amoled_black_inside">#1E1E1E</color>
+    <color name="box_card">#494949</color>
+
 </resources>

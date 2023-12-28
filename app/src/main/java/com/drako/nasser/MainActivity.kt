@@ -43,9 +43,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.drako.nasser.navigation.AppNavigation
 import com.drako.nasser.server.NanoServer
 import com.drako.nasser.ui.theme.NasserTheme
-import com.drako.nasser.ui.view.HomeScreen
 import fi.iki.elonen.NanoHTTPD
 
 class MainActivity : ComponentActivity() {
@@ -80,7 +80,8 @@ class MainActivity : ComponentActivity() {
 
 
 
-            HomeScreen()
+            //LayoutApp()
+            AppNavigation()
         }
         runServer()
     }
