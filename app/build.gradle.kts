@@ -48,7 +48,7 @@ android {
         }
     }
 }
-
+//val logback_version: String by project
 dependencies {
 
     // server
@@ -64,6 +64,19 @@ dependencies {
     val nav_version = "2.7.0"
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // ktor
+    /*
+    implementation("io.ktor:ktor-server-core:1.5.0")
+    implementation("io.ktor:ktor-server-host-common:1.5.0")
+    implementation("io.ktor:ktor-server-netty:1.5.0")
+    implementation("io.ktor:ktor-client-android:1.5.0")
+    implementation("io.ktor:ktor-client-serialization:1.5.0")
+    implementation("io.ktor:ktor-server-tests:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
+    implementation("io.ktor:ktor-client-logging-jvm:1.5.0")*/
+
+
 
     implementation("androidx.activity:activity-compose:1.7.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))

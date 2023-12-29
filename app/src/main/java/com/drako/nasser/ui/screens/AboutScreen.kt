@@ -25,8 +25,6 @@ import com.drako.nasser.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(navController: NavController, text: String?) {
-
-    SetStatusBarColor(color = colorResource(id = R.color.amoled_black))
     Scaffold(topBar = { ToolbarWithBack(navController) }) { padding ->
         Box(
             Modifier.fillMaxSize()

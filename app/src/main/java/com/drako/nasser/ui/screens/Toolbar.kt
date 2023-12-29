@@ -49,14 +49,18 @@ fun ToolbarWithBack(navController: NavController) {
         ),
         navigationIcon = {
             IconButton(onClick = { navController.popBackStack() }) {
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Arrow back")
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Arrow back",
+                    tint = Color.White
+                )
             }
         },
         actions = {
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.Menu,
-                    contentDescription = "asd"
+                    contentDescription = "Main Icon"
                 )
             }
         },

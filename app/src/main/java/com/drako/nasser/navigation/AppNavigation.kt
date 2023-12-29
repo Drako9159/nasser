@@ -10,11 +10,18 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.drako.nasser.ui.screens.AboutScreen
 import com.drako.nasser.ui.screens.HomeScreen
+import com.drako.nasser.ui.screens.SplashScreen
 
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = AppScreens.HomeScreen.route) {
+    NavHost(navController = navController, startDestination = AppScreens.SplashScreen.route) {
+        composable(
+            route = AppScreens.SplashScreen.route
+        ) {
+            SplashScreen(navController)
+        }
+
         composable(
             route = AppScreens.HomeScreen.route,
             enterTransition = {

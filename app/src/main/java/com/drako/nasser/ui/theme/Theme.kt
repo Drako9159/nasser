@@ -13,14 +13,14 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
-)
+    tertiary = Pink80,
+
+    )
 
 private val LightColorScheme = lightColorScheme(
     primary = Purple40,
@@ -57,10 +57,12 @@ fun NasserTheme(
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
+
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+
         }
     }
 

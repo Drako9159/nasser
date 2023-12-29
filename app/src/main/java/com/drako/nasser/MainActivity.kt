@@ -43,66 +43,63 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import com.drako.nasser.navigation.AppNavigation
-import com.drako.nasser.server.NanoServer
+import com.drako.nasser.ui.screens.SetStatusBarColor
+import com.drako.nasser.ui.screens.SplashScreen
 import com.drako.nasser.ui.theme.NasserTheme
-import fi.iki.elonen.NanoHTTPD
 
 class MainActivity : ComponentActivity() {
 
-    private var server: NanoServer? = null
+    //private var server: NanoServer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
-        initUI()
-    }
-
-
-    private fun initUI() {
-
         setContent {
+            NasserTheme {
+                SetStatusBarColor(color = colorResource(id = R.color.amoled_black))
+                    AppNavigation()
 
 
-            //helloApp()
-            //Content()
-            //ViewContainer()
-            /*
-                        Surface(
-                            modifier = Modifier.fillMaxSize(),
-                            color = MaterialTheme.colorScheme.background
-                        ) {
-                            LoginScreen(LoginViewModel())
-
-                        }*/
-
-
-
-
-            //LayoutApp()
-            AppNavigation()
-        }
-        runServer()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        server?.stop()
-    }
-
-    private fun runServer() {
-        server = NanoServer()
-        Thread {
-            try {
-                server?.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false)
-                runOnUiThread {
-                    println("Server is running now")
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
-        }.start()
+
+
+        }
+    }
+
+
+    /*
+        override fun onDestroy() {
+            super.onDestroy()
+            server?.stop()
+        }
+
+        fun runServer() {
+            server = NanoServer()
+            Thread {
+                try {
+                    server?.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false)
+                    runOnUiThread {
+                        println("Server is running now")
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }.start()
+        }*/
+}
+
+@Composable
+fun SplashScreenBackground(content: @Composable () -> Unit) {
+    // Puedes personalizar el fondo aquí según tus necesidades
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.Blue) // Cambia el color a tu preferencia
+    ) {
+        content()
     }
 }
 
