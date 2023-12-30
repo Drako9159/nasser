@@ -24,7 +24,7 @@ fun AppNavigation() {
 
         composable(
             route = AppScreens.HomeScreen.route,
-            enterTransition = {
+            /*enterTransition = {
                 slideIntoContainer(
                     towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
                     animationSpec = tween(700)
@@ -35,7 +35,7 @@ fun AppNavigation() {
                     towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
                     animationSpec = tween(700)
                 )
-            },
+            },*/
             popEnterTransition = {
                 slideIntoContainer(
                     towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,

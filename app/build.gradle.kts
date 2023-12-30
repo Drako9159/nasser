@@ -65,6 +65,9 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+    // for images view
+    implementation("io.coil-kt:coil-compose:1.4.0")
+
     // ktor
     /*
     implementation("io.ktor:ktor-server-core:1.5.0")

@@ -4,6 +4,8 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Environment
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,8 +44,10 @@ import androidx.core.app.ComponentActivity
 import androidx.navigation.NavController
 import com.drako.nasser.R
 import com.drako.nasser.navigation.AppScreens
+import com.drako.nasser.reader.ReadViewHTTPD
 import com.drako.nasser.server.NanoServer
 import com.drako.nasser.server.NetworkUtils
+import com.drako.nasser.utils.FileReader
 import com.drako.nasser.utils.FileUtils
 import java.io.File
 
@@ -52,7 +56,6 @@ import java.io.File
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController) {
-
     Scaffold(topBar = { Toolbar() }) { padding ->
         Box(
             Modifier.fillMaxSize()
@@ -74,7 +77,14 @@ fun HomeScreen(navController: NavController) {
                     NetworkIpList()
                 }
             }
+
+            ReadViewHTTPD()
             //FileList()
+
+            //FileReader()
+
+            //val directoryPath = Environment.getExternalStorageDirectory().absolutePath
+            //Toast.makeText(LocalContext.current, directoryPath, Toast.LENGTH_SHORT).show()
         }
     }
 }
@@ -124,20 +134,20 @@ fun HomeBodyContent(navController: NavController) {
 
         CardHome("Server in Local")
 
-        val nanoServer = NanoServer()
+        val nanoServer = NanoServer(LocalContext.current)
         Spacer(modifier = Modifier.padding(8.dp))
         Button(onClick = {
             if (serverStatus) {
-                nanoServer.stopServer(nanoServer)
+                nanoServer.stopServer()
             } else {
-                nanoServer.runServer(nanoServer)
+                nanoServer.runServer()
             }
             serverStatus = !serverStatus
         }) {
             Text(text = if (serverStatus) "ACTIVATED" else "INACTIVE")
         }
         Button(onClick = {
-            nanoServer.stopServer(nanoServer)
+            nanoServer.stopServer()
         }) {
             Text(text = "APAGAR")
         }
@@ -276,6 +286,7 @@ fun FileItem(file: File) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .background(Color.Red)
     ) {
         Icon(
             imageVector = Icons.Default.Favorite,
