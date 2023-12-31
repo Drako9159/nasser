@@ -1,6 +1,7 @@
 package com.drako.nasser.server
 
 import android.content.Context
+import com.drako.nasser.controller.ImagesController
 import fi.iki.elonen.NanoHTTPD
 import java.io.File
 import java.io.IOException
@@ -13,7 +14,11 @@ class NanoServer(private val context: Context) : NanoHTTPD(8080) {
 
         val uri = session.uri;
         if (uri.contains("/api")) {
+            return parseResposne(ImagesController(session, context))
         }
+
+
+
         if (uri.equals("/")) {
             return parseResposne(serveStaticFiles("/index.html"))
         }
